@@ -1,0 +1,15 @@
+
+let width=400,height=400;
+x=0;
+function setup() {
+  createCanvas(width, height);
+  background(250,250,100);
+}
+
+function draw() {
+    let x= Math.floor(Math.random()*400)+1;
+    let y= Math.floor(Math.random()*400)+1;
+    noStroke();
+    fill(random(0,255),random(0,255),random(0,255));
+    ellipse(x,y,50);
+  }
