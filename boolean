@@ -1,0 +1,23 @@
+let width=400,height=400;
+let on=false;
+function setup() {
+  createCanvas(width, height);
+}
+
+function draw() {
+  background(255);
+  fill(255,123,270);
+  
+  if (on){
+    background("BLACK");    
+  }else{
+    background(255);    
+  }
+  stroke("RED");
+  rect(150,150,70,70);  
+}
+  
+function mousePressed(){
+  if (mouseX>=150 && mouseX<=220 && mouseY>=150 && mouseY<=220)
+    on=!on;
+}
