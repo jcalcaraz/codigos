@@ -1,0 +1,16 @@
+let x=15,y=30;
+function setup() {
+  createCanvas(400, 400);
+  background(220);
+}
+
+function draw() {
+ while (x<=400){
+    ellipse(x,y,30);
+    x=x+30;
+  } 
+  for (let x=15;x<=400;x+30){
+    ellipse(x,y+30,30)
+  }
+  
+}
