@@ -1,0 +1,21 @@
+let velocidad=2;
+let width=400,height=400;
+let x=15;
+let adelante = true;
+function setup() {
+  createCanvas(width, height);
+}
+
+function draw() {
+  background(255);
+  noStroke();
+  fill("#8A6CBC");
+  
+  if (x<15 || x>385)
+    velocidad= velocidad*-1;
+  
+  x=x+velocidad;
+  
+  ellipse(x,200,30);
+  
+}
