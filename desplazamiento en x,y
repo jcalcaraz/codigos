@@ -1,0 +1,21 @@
+let velocidad=5,w=400,h=400;
+let velX =1;
+let velY=-3;
+let x=15;y=15;
+function setup() {
+  createCanvas(w, h);
+}
+
+function draw() {
+  background(220);
+  ellipse(x,y,30);
+  x+=velX;
+  y+=velY;
+  if (x>=w || x<=0)
+    velX=velX*-1;
+  if (y>=h || y<=0)
+    velY=velY*-1;
+  
+  
+  
+}
