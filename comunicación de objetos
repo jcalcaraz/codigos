@@ -1,0 +1,117 @@
+let velocidad=5,w=400,h=400;
+let pelotas = new Array();
+
+function setup() {
+  createCanvas(w, h); 
+  for (let i=0;i<=200;i++){
+    let p = new Pelota(random(0,400),random(0,400),8,h);
+    pelotas.push(p);
+  }  
+ }
+
+function draw() {
+  background(220);
+  for (let p of pelotas)
+    p.crea();
+  
+  for (let p of pelotas){
+    for (let op of pelotas)
+    {
+      if (p!=op){
+       if (p.interseccion(op)==true){
+         console.log("hecho");
+         break;
+         }
+      }
+    }
+  }
+    
+  
+}
+
+
+
+function mouseClicked(){
+  let mX = mouseX;
+  let mY = mouseY;
+  for (let p of pelotas){
+    p.click(mX,mY);
+    //console.log(p.distancia(mX,mY));
+  }
+}
+  function doubleClicked(){
+     let mX = mouseX;
+     let mY = mouseY;
+    
+    for (let i=0; pelotas.length-1;i+=1){
+      if (pelotas[i].doubleClick(mX,mY)==true){
+        pelotas.splice(i,1);
+        break;
+      }
+    }
+    console.log(pelotas.length);
+  }
+  
+
+
+
+class Pelota{
+  
+  constructor(x,y,d,hc){
+    this.x=x;
+    this.y=y;
+    this.diametro= d;
+    //alto del canvas;
+    this.hC = hc;
+    
+    this.color={
+    r:255,
+    g:255,
+    b:255
+    }
+}
+  crea(){
+    fill(this.color.r,this.color.g,this.color.b);
+    this.e = ellipse(this.x+=random(-5,5),this.y += random(-3,3),this.diametro);
+  }
+  click(mX,mY){
+    let d = this.distancia(mX,mY);
+    if (d<this.diametro/2){
+      this.color.r=0;
+      this.color.g=0;
+      this.color.b=0;
+    }
+  }
+  doubleClick(mX,mY){
+    let d = this.distancia(mX,mY);
+    if (d<this.diametro/2)
+      return true;
+    else
+      return false;
+  }
+
+  
+  
+  distancia(mX,mY){
+    let d  = Math.pow((this.x-mX),2)+ Math.pow( (this.y-mY),2)
+    return Math.sqrt(d);
+  }
+
+  interseccion(pelota){
+      if (this.distancia0(pelota.x,pelota.y,pelota.diametro/2, this.x,this.y,this.diametro/2)==true)
+        return true;
+    return false;
+  }
+
+  
+  distancia0(p1X,p1Y,radio1,p2X,p2Y,radio2){
+  let d = dist(p1X,p1Y,p2X,p2Y);
+  let sr = radio1 + radio2;
+  if (d<radio1+radio2)
+    return true;
+  return false;
+}
+  
+  
+}
+
